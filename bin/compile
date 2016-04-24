@@ -9,6 +9,7 @@ BUILD_DIR=$1
 cd $BUILD_DIR
 
 echo "-----> Installing libperl"
+apt-get update
 apt-get install -y libperl-dev
 
 echo "-----> Downloading mod_perl version $MOD_PERL_VERSION"
