@@ -1,0 +1,23 @@
+#!/bin/sh
+
+set -eu
+
+MOD_PERL_VERSION=2.0.9
+
+BUILD_DIR=$1
+
+cd $BUILD_DIR
+
+echo "-----> Downloading mod_perl version $MOD_PERL_VERSION"
+curl --location --fail --max-time 60 http://mirrors.sonic.net/apache/perl/mod_perl-$MOD_PERL_VERSION.tar.gz | tar xz
+
+echo "-----> Building mod_perl version $MOD_PERL_VERSION"
+cd mod_perl-2.0.9
+perl Makefile.PL \
+  USE_APXS=1 \
+  WITH_APXS=$(which apxs) \
+  EVERYTHING=1
+make
+
+echo "-----> Installing mod_perl version $MOD_PERL_VERSION"
+make install

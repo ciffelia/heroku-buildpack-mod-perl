@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "mod_perl"
+exit 0
