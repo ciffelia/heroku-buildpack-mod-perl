@@ -8,6 +8,9 @@ BUILD_DIR=$1
 
 cd $BUILD_DIR
 
+echo "-----> Installing libperl"
+apt-get install -y libperl-dev
+
 echo "-----> Downloading mod_perl version $MOD_PERL_VERSION"
 curl --location --fail --max-time 60 http://mirrors.sonic.net/apache/perl/mod_perl-$MOD_PERL_VERSION.tar.gz | tar xz
 
